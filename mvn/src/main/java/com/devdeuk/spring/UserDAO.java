@@ -5,7 +5,6 @@ import java.util.List;
 
 public class UserDAO {
 
-	//초기화
 	static List<User> list = new ArrayList<User>();
 	
 	public static void save(User user){
