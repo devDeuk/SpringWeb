@@ -14,14 +14,12 @@ public class RegisterController {
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
 	public String register(Locale locale, Model model) {	
-		//System.out.println("GET일경우");
 		
 		return "register";
 	}
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
-	public String registerFinised(Locale locale,@ModelAttribute("user") User user, Model model) {	
-		//System.out.println("POST일경우"); 
+	public String registerFinised(Locale locale,@ModelAttribute("user") User user, Model model) {	 
 		if(!user.getPassword().equals(user.getConfirmPassword())){
 			model.addAttribute("msg", "password not matched!");			
 			model.addAttribute("user", user);
