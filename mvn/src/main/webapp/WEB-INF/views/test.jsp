@@ -1,3 +1,4 @@
+<%@ page session="false" pageEncoding="utf-8"%>s
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
