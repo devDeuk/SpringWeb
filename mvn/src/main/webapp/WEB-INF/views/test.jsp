@@ -14,9 +14,13 @@ select num from abc
 
   <h2>Results</h2>
 
+
+
 <c:forEach var="row" items="${rs.rows}">
     Foo ${row.num}<br/>
 </c:forEach>
+
+
 
   </body>
 </html>
