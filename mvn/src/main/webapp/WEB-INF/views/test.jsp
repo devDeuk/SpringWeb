@@ -21,6 +21,8 @@ select num from abc
 </c:forEach>
 
 
+한글도 되야 하는데.. 젠장
+
 
   </body>
 </html>
