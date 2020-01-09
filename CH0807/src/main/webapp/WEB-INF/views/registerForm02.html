@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Spring Form</title>
+</head>
+<body>
+<h2>Spring Form</h2>
+<form id="member" action="register" method="post">
+	<table>
+		<tr>
+			<td>취미(hobbyList) :</td>
+			<td>
+			<span><input id="hobbyList1" name="hobbyList" type="checkbox" value="01"/><label for="hobbyList1">Sports</label></span>
+			<span><input id="hobbyList2" name="hobbyList" type="checkbox" value="02"/><label for="hobbyList2">Music</label></span>
+			<span><input id="hobbyList3" name="hobbyList" type="checkbox" value="03"/><label for="hobbyList3">Movie</label></span>
+			<input type="hidden" name="_hobbyList" value="on"/>
+			</td>
+		</tr>
+	</table>
+	
+	<button id="register" name="register" type="submit" value="Submit">등록</button>
+</form>
+</body>
+</html>

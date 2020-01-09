@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="customAccessDenied" class="org.hdcd.common.security.CustomAccessDeniedHandler"></bean>
+	<bean id="customLoginSuccess" class="org.hdcd.common.security.CustomLoginSuccessHandler"></bean>
+	<!-- <bean id="customPasswordEncoder" class="org.hdcd.security.CustomNoOpPasswordEncoder"></bean> -->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+	<security:http>
+		<security:intercept-url pattern="/board/list" access="permitAll" />
+		<security:intercept-url pattern="/board/register" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/notice/list" access="permitAll" />	
+		<security:intercept-url pattern="/notice/register" access="hasRole('ROLE_ADMIN')" />	
+
+		<security:form-login login-page="/login" authentication-success-handler-ref="customLoginSuccess" />
+		
+		<security:access-denied-handler ref="customAccessDenied" />
+		
+		<security:logout logout-url="/logout" invalidate-session="true" />
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<!-- <security:jdbc-user-service data-source-ref="dataSource" /> -->
+			
+			<security:jdbc-user-service 
+				data-source-ref="dataSource" 
+				users-by-username-query="SELECT user_id , user_pw , enabled FROM member WHERE user_id = ?" 
+				authorities-by-username-query="SELECT b.user_id, a.auth FROM member_auth a, member b WHERE a.user_no = b.user_no AND b.user_id = ?" />
+			
+			<!-- <security:password-encoder ref="customPasswordEncoder" /> -->
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>

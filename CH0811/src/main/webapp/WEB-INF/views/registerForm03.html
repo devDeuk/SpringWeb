@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Spring Form</title>
+</head>
+<body>
+<h2>Spring Form</h2>
+<form id="member" action="register2" method="post">
+	<table>
+		<tr>
+			<td>소유차량</td>
+			<td>
+			<select id="carList" name="carList" multiple="multiple">
+				<option value="01">Volvo</option>
+				<option value="02">Saab</option>
+				<option value="03">Opel</option>
+			</select>
+			<input type="hidden" name="_carList" value="1"/>
+			</td>
+		</tr>
+	</table>
+	
+	<button id="register" name="register" type="submit" value="Submit">등록</button>
+</form>
+</body>
+</html>
